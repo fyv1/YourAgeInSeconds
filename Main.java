@@ -1,6 +1,5 @@
 package pl.fyv;
 
-import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.Scanner;
@@ -10,6 +9,7 @@ public class Main {
     public static void main(String[] args) {
 
         Scanner buffer = new Scanner(System.in);
+        Engine e = new Engine();
 
         System.out.println("Twoj wiek w sekundach");
         System.out.println("Podaj dzien urodzenia: "); int d = buffer.nextInt();
@@ -18,18 +18,15 @@ public class Main {
 
         User u = new User(d,m,y);
 
-        //todo formating data objects
-
         Calendar today = Calendar.getInstance();
-        SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yy");
         Date todayD = today.getTime();
-        sdf.format(todayD);
-        System.out.println(todayD);
-
         Calendar bday = Calendar.getInstance();
         bday.set(u.getYear(), u.getMonth()-1, u.getDay());
         Date bdayD = bday.getTime();
-        sdf.format(bdayD);
-        System.out.println(bdayD);
+
+
+        System.out.println("Twoj wiek w sekundach: "+ e.getDifferenceDays(bdayD, todayD));
+        
+        //todo wrzucic wszystkie te smieci do poszczegolnych klas :V
     }
 }
