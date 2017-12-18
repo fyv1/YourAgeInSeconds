@@ -11,12 +11,7 @@ public class Main {
         Scanner buffer = new Scanner(System.in);
         Engine e = new Engine();
 
-        System.out.println("Twoj wiek w sekundach");
-        System.out.println("Podaj dzien urodzenia: "); int d = buffer.nextInt();
-        System.out.println("Podaj miesiac: "); int m = buffer.nextInt();
-        System.out.println("Podaj rok: "); int y = buffer.nextInt();
-
-        User u = new User(d,m,y);
+        e.getData(buffer);
 
         Calendar today = Calendar.getInstance();
         Date todayD = today.getTime();
@@ -26,7 +21,5 @@ public class Main {
 
 
         System.out.println("Twoj wiek w sekundach: "+ e.getDifferenceDays(bdayD, todayD));
-        
-        //todo wrzucic wszystkie te smieci do poszczegolnych klas :V
     }
 }
