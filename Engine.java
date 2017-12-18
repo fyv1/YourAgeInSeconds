@@ -6,6 +6,9 @@ import java.util.Scanner;
 
 public class Engine {
 
+    private Date todayD;
+    private Date bdayD;
+
     public static long getDifferenceDays(Date d1, Date d2) {
         return d2.getTime() - d1.getTime();
     }
@@ -18,11 +21,13 @@ public class Engine {
 
         User u = new User(d,m,y);
 
-        try {
+        try { // start try
             checkData(u);
         } catch (IllegalArgumentException e) {
             e.printStackTrace();
-        }
+        } // end try
+
+        settingDate(u);
     }
 
     private void checkData(User u) {
@@ -36,6 +41,28 @@ public class Engine {
             throw new IllegalArgumentException("Niepoprawny rok");
         }
     }
+    private void settingDate(User u) {
 
+        Calendar today = Calendar.getInstance();
+        setTodayD(today.getTime());
+        Calendar bday = Calendar.getInstance();
+        bday.set(u.getYear(), u.getMonth()-1, u.getDay());
+        setBdayD(bday.getTime());
+    }
 
+    public Date getBdayD() {
+        return bdayD;
+    }
+
+    public Date getTodayD() {
+        return todayD;
+    }
+
+    public void setBdayD(Date bdayD) {
+        this.bdayD = bdayD;
+    }
+
+    public void setTodayD(Date todayD) {
+        this.todayD = todayD;
+    }
 }
